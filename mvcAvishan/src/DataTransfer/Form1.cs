@@ -15,6 +15,53 @@ namespace DataTransfer
         public Form1()
         {
             InitializeComponent();
+
+            List<string> list1 = DataBaseHelper.GetInstances();
+            List<string> list2 = new List<string>(list1);
+
+            connectionStringControl1.Servers = list1;
+            connectionStringControl2.Servers = list2 ;
+
+
+        }
+
+      
+        private void connectionStringControl1_SelectionChangeCommittedEvent(string serverName)
+        {
+            connectionStringControl1.DataBases = DataBaseHelper.GetDatabases(serverName);
+        }
+
+        private void connectionStringControl2_SelectionChangeCommittedEvent(string serverName)
+        {
+            connectionStringControl2.DataBases = DataBaseHelper.GetDatabases(serverName);
+        }
+
+        private void SourceTestConnectionBTN_Click(object sender, EventArgs e)
+        {
+            if(DataBaseHelper.TestConnection(connectionStringControl1.Server, connectionStringControl1.UserName, connectionStringControl1.password))
+            {
+                MessageBox.Show("successful");
+
+            }
+            else
+            {
+
+                MessageBox.Show("error!");
+            }
+        }
+
+        private void TargetTestConnectionBTN_Click(object sender, EventArgs e)
+        {
+            if (DataBaseHelper.TestConnection(connectionStringControl2.Server, connectionStringControl2.UserName, connectionStringControl2.password))
+            {
+                MessageBox.Show("successful");
+
+            }
+            else
+            {
+
+                MessageBox.Show("error!");
+            }
         }
     }
 }
