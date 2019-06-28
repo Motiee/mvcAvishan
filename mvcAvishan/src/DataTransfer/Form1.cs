@@ -20,9 +20,10 @@ namespace DataTransfer
             List<string> list2 = new List<string>(list1);
 
             connectionStringControl1.Servers = list1;
-            connectionStringControl2.Servers = list2 ;
+            connectionStringControl2.Servers = list2;
 
-
+            connectionStringControl1.set(DBConnection.GetConnectionString(DBConnection.enConnectionType.source));
+            connectionStringControl2.set(DBConnection.GetConnectionString(DBConnection.enConnectionType.Target));
         }
 
       
@@ -41,7 +42,7 @@ namespace DataTransfer
             if(DataBaseHelper.TestConnection(connectionStringControl1.Server, connectionStringControl1.UserName, connectionStringControl1.password))
             {
                 MessageBox.Show("successful");
-
+                DBConnection.SetConnectionString(DBConnection.enConnectionType.source, connectionStringControl1.Get());
             }
             else
             {
@@ -55,7 +56,7 @@ namespace DataTransfer
             if (DataBaseHelper.TestConnection(connectionStringControl2.Server, connectionStringControl2.UserName, connectionStringControl2.password))
             {
                 MessageBox.Show("successful");
-
+                DBConnection.SetConnectionString(DBConnection.enConnectionType.Target, connectionStringControl2.Get());
             }
             else
             {

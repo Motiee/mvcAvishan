@@ -113,7 +113,21 @@ namespace DataTransfer
         public delegate void SelectionChangeCommitted(string serverName);
         public event SelectionChangeCommitted SelectionChangeCommittedEvent;
 
+        public void set(ConnectionString obj)
+        {
+            Server = obj.Server;
+            DataBase = obj.DataBase;
+            UserName = obj.UserName;
+            password = obj.Password;
+            
+        }
 
+        public ConnectionString Get()
+        {
+            ConnectionString obj = new ConnectionString(Server,DataBase,UserName,password);
+            return obj;
+
+        }
 
         private void ServerCombo_SelectionChangeCommitted(object sender, EventArgs e)
         {

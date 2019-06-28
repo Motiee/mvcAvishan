@@ -54,12 +54,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConnectionStringControl.cs">
+    <Compile Include="DBConnectionString\ConnectionString.cs" />
+    <Compile Include="DBConnectionString\ConnectionStringControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ConnectionStringControl.Designer.cs">
+    <Compile Include="DBConnectionString\ConnectionStringControl.Designer.cs">
       <DependentUpon>ConnectionStringControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="DBConnectionString\ConnectionStringCreator.cs" />
+    <Compile Include="DBConnectionString\ConnectionStringSerialization.cs" />
+    <Compile Include="DBConnectionString\DBConnection.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,7 +73,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DataBaseHelper.cs" />
-    <EmbeddedResource Include="ConnectionStringControl.resx">
+    <EmbeddedResource Include="DBConnectionString\ConnectionStringControl.resx">
       <DependentUpon>ConnectionStringControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
