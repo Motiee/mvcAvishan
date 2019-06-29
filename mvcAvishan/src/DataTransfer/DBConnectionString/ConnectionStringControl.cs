@@ -96,21 +96,7 @@ namespace DataTransfer
             }
         }
 
-       public string GetConnectionString()
-        {
-            if (userTextBox.Text.Length == 0 || passwordTextBox.Text.Length == 0)
-            {
-                return String.Format("data source={0};database={1};", ServerCombo.Text, DataBaseCombo);
-            }
-            else
-            {
-                return String.Format("data source={0};database={1};uid={2};pwd={3}", ServerCombo.Text, DataBaseCombo, userTextBox, passwordTextBox.Text);
-            }
-            
-        }
-
-
-        public delegate void SelectionChangeCommitted(string serverName);
+            public delegate void SelectionChangeCommitted(string serverName);
         public event SelectionChangeCommitted SelectionChangeCommittedEvent;
 
         public void set(ConnectionString obj)

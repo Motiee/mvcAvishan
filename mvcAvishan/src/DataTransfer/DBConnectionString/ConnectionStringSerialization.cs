@@ -32,6 +32,18 @@ namespace DataTransfer
         public string UserName { get; set; }
         public string Password { get; set; }
 
+        public string GetConnectionString()
+        {
+            if (UserName.Length == 0 || Password.Length == 0)
+            {
+                return String.Format("data source={0};database={1};", Server, DataBase);
+            }
+            else
+            {
+                return String.Format("data source={0};database={1};uid={2};pwd={3}", Server, DataBase, UserName, Password);
+            }
+
+        }
     }
 
 

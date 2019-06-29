@@ -11,7 +11,7 @@ namespace DataTransfer
 {
     public static class DataBaseHelper
     {
-
+        public static List<string> Instaces;
         public static List<string> GetInstances() {
 
             List<string> list = new List<string>();
@@ -21,6 +21,7 @@ namespace DataTransfer
             {
                 list.Add((String.Format("{0}\\{1}", row["ServerName"].ToString(), row["InstanceName"].ToString())));
             }
+            Instaces = list;
             return list;
         }
 
