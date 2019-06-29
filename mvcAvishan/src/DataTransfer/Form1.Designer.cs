@@ -30,12 +30,12 @@
         {
             this.MainTLP = new System.Windows.Forms.TableLayoutPanel();
             this.HeaderTLP = new System.Windows.Forms.TableLayoutPanel();
+            this.connectionStringControl1 = new DataTransfer.ConnectionStringControl();
+            this.connectionStringControl2 = new DataTransfer.ConnectionStringControl();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.SourceTestConnectionBTN = new System.Windows.Forms.Button();
             this.TargetTestConnectionBTN = new System.Windows.Forms.Button();
-            this.connectionStringControl1 = new DataTransfer.ConnectionStringControl();
-            this.connectionStringControl2 = new DataTransfer.ConnectionStringControl();
             this.MainTLP.SuspendLayout();
             this.HeaderTLP.SuspendLayout();
             this.SuspendLayout();
@@ -50,9 +50,9 @@
             this.MainTLP.Margin = new System.Windows.Forms.Padding(0);
             this.MainTLP.Name = "MainTLP";
             this.MainTLP.RowCount = 3;
-            this.MainTLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30.76923F));
-            this.MainTLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 69.23077F));
-            this.MainTLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 267F));
+            this.MainTLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.55836F));
+            this.MainTLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80.44164F));
+            this.MainTLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 132F));
             this.MainTLP.Size = new System.Drawing.Size(800, 450);
             this.MainTLP.TabIndex = 0;
             // 
@@ -77,6 +77,38 @@
             this.HeaderTLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.HeaderTLP.Size = new System.Drawing.Size(800, 56);
             this.HeaderTLP.TabIndex = 1;
+            // 
+            // connectionStringControl1
+            // 
+            this.connectionStringControl1.DataBase = "";
+            this.connectionStringControl1.DataBases = null;
+            this.connectionStringControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.connectionStringControl1.Location = new System.Drawing.Point(72, 0);
+            this.connectionStringControl1.Margin = new System.Windows.Forms.Padding(0);
+            this.connectionStringControl1.Name = "connectionStringControl1";
+            this.connectionStringControl1.password = "";
+            this.connectionStringControl1.Server = "";
+            this.connectionStringControl1.Servers = null;
+            this.connectionStringControl1.Size = new System.Drawing.Size(617, 28);
+            this.connectionStringControl1.TabIndex = 0;
+            this.connectionStringControl1.UserName = "";
+            this.connectionStringControl1.SelectionChangeCommittedEvent += new DataTransfer.ConnectionStringControl.SelectionChangeCommitted(this.connectionStringControl1_SelectionChangeCommittedEvent);
+            // 
+            // connectionStringControl2
+            // 
+            this.connectionStringControl2.DataBase = "";
+            this.connectionStringControl2.DataBases = null;
+            this.connectionStringControl2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.connectionStringControl2.Location = new System.Drawing.Point(72, 28);
+            this.connectionStringControl2.Margin = new System.Windows.Forms.Padding(0);
+            this.connectionStringControl2.Name = "connectionStringControl2";
+            this.connectionStringControl2.password = "";
+            this.connectionStringControl2.Server = "";
+            this.connectionStringControl2.Servers = null;
+            this.connectionStringControl2.Size = new System.Drawing.Size(617, 28);
+            this.connectionStringControl2.TabIndex = 0;
+            this.connectionStringControl2.UserName = "";
+            this.connectionStringControl2.SelectionChangeCommittedEvent += new DataTransfer.ConnectionStringControl.SelectionChangeCommitted(this.connectionStringControl2_SelectionChangeCommittedEvent);
             // 
             // label1
             // 
@@ -123,38 +155,6 @@
             this.TargetTestConnectionBTN.Text = "Test Connection";
             this.TargetTestConnectionBTN.UseVisualStyleBackColor = true;
             this.TargetTestConnectionBTN.Click += new System.EventHandler(this.TargetTestConnectionBTN_Click);
-            // 
-            // connectionStringControl1
-            // 
-            this.connectionStringControl1.DataBase = "";
-            this.connectionStringControl1.DataBases = null;
-            this.connectionStringControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.connectionStringControl1.Location = new System.Drawing.Point(72, 0);
-            this.connectionStringControl1.Margin = new System.Windows.Forms.Padding(0);
-            this.connectionStringControl1.Name = "connectionStringControl1";
-            this.connectionStringControl1.password = "";
-            this.connectionStringControl1.Server = "";
-            this.connectionStringControl1.Servers = null;
-            this.connectionStringControl1.Size = new System.Drawing.Size(617, 28);
-            this.connectionStringControl1.TabIndex = 0;
-            this.connectionStringControl1.UserName = "";
-            this.connectionStringControl1.SelectionChangeCommittedEvent += new DataTransfer.ConnectionStringControl.SelectionChangeCommitted(this.connectionStringControl1_SelectionChangeCommittedEvent);
-            // 
-            // connectionStringControl2
-            // 
-            this.connectionStringControl2.DataBase = "";
-            this.connectionStringControl2.DataBases = null;
-            this.connectionStringControl2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.connectionStringControl2.Location = new System.Drawing.Point(72, 28);
-            this.connectionStringControl2.Margin = new System.Windows.Forms.Padding(0);
-            this.connectionStringControl2.Name = "connectionStringControl2";
-            this.connectionStringControl2.password = "";
-            this.connectionStringControl2.Server = "";
-            this.connectionStringControl2.Servers = null;
-            this.connectionStringControl2.Size = new System.Drawing.Size(617, 28);
-            this.connectionStringControl2.TabIndex = 0;
-            this.connectionStringControl2.UserName = "";
-            this.connectionStringControl2.SelectionChangeCommittedEvent += new DataTransfer.ConnectionStringControl.SelectionChangeCommitted(this.connectionStringControl2_SelectionChangeCommittedEvent);
             // 
             // Form1
             // 

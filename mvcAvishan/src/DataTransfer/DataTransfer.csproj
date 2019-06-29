@@ -54,14 +54,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DBConnectionString\ConnectionString.cs" />
     <Compile Include="DBConnectionString\ConnectionStringControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DBConnectionString\ConnectionStringControl.Designer.cs">
       <DependentUpon>ConnectionStringControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="DBConnectionString\ConnectionStringCreator.cs" />
     <Compile Include="DBConnectionString\ConnectionStringSerialization.cs" />
     <Compile Include="DBConnectionString\DBConnection.cs" />
     <Compile Include="Form1.cs">

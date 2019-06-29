@@ -33,4 +33,21 @@ namespace DataTransfer
 
         }
     }
+
+
+
+    public class ConnectionStringCreator
+    {
+        public ConnectionStringCreator()
+        {
+
+
+        }
+        public ConnectionStringSerialization FactoryMethod(string enConnectionType)
+        {
+            return new ConnectionStringSerialization(enConnectionType);
+        }
+
+
+    }
 }
