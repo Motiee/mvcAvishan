@@ -12,9 +12,9 @@ namespace DataTransfer.DAL
     {
         private readonly string _connctionString = "";
 
-        public DAO(string connctionString) {
-            _connctionString = connctionString;
-        }
+        public DAO(DBConnection.enConnectionType enConnectionType) {
+            _connctionString = DBConnection.GetConnectionString(enConnectionType).GetConnectionString();
+         }
       
 
         public object ExecuteScalar(SqlCommand sqlCommand)

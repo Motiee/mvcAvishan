@@ -34,5 +34,11 @@ namespace DataTransfer
             frm_connectionString frm = new frm_connectionString(DataBaseHelper.Instaces, DBConnection.enConnectionType.Target);
             frm.ShowDialog();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DAL.Source.Facture facture = new DAL.Source.Facture();
+            facture.Get_Facture_Service_Kinds();
+        }
     }
 }
