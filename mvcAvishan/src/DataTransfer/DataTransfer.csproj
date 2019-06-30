@@ -57,6 +57,7 @@
     <Compile Include="DAL\DAO.cs" />
     <Compile Include="DAL\Source\Source_Facture.cs" />
     <Compile Include="DAL\Source\Source_FactureContainer.cs" />
+    <Compile Include="DAL\Source\Source_Setting.cs" />
     <Compile Include="DAL\Source\Source_Ware.cs" />
     <Compile Include="DBConnectionString\ConnectionStringControl.cs">
       <SubType>UserControl</SubType>

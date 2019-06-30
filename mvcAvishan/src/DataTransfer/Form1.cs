@@ -45,6 +45,9 @@ namespace DataTransfer
 
             DAL.Source.Source_Ware source_Ware = new DAL.Source.Source_Ware();
             source_Ware.Get_Ware();
+
+            DAL.Source.Source_Setting Source_Setting = new DAL.Source.Source_Setting();
+            Source_Setting.Get_Setting();
         }
     }
 }
