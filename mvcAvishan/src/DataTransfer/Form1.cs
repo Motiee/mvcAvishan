@@ -37,7 +37,7 @@ namespace DataTransfer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DAL.Source.Facture facture = new DAL.Source.Facture();
+            DAL.Source.Source_Facture facture = new DAL.Source.Source_Facture();
             facture.Get_Facture_Service_Kinds();
         }
     }

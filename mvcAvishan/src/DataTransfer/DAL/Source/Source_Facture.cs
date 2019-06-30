@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace DataTransfer.DAL.Source
 {
-   class Facture
+   class Source_Facture
     {
         private DAO dao;
         private SqlCommand cmd;
-        public Avishan_Facture Get_Facture_Service_Kinds() {
+        public Target_Facture Get_Facture_Service_Kinds() {
 
-            Avishan_Facture avishan_Facture = new Avishan_Facture();
+            Target_Facture target_Facture = new Target_Facture();
             dao = new DAO(DBConnection.enConnectionType.source);
             cmd = new SqlCommand();
             cmd.CommandText = "SELECT FACTURE_SERVICE_KIND_IN FROM[RASBankAccounting].[dbo].[FACTURE] group by FACTURE_SERVICE_KIND_IN";
@@ -23,19 +23,19 @@ namespace DataTransfer.DAL.Source
             {
                 Int32 KIND;
                 KIND= sqlDataReader.GetInt32(sqlDataReader.GetOrdinal("FACTURE_SERVICE_KIND_IN"));
-                if (KIND == 0) { avishan_Facture.HasSeat = true; }
-                if (KIND == 1) { avishan_Facture.HasToGo = true; }
-                if (KIND == 2) { avishan_Facture.HasDelivery = true; }
+                if (KIND == 0) { target_Facture.HasSeat = true; }
+                if (KIND == 1) { target_Facture.HasToGo = true; }
+                if (KIND == 2) { target_Facture.HasDelivery = true; }
 
             }
 
-            return avishan_Facture;
+            return target_Facture;
 
         }
 
     }
 
-    class Avishan_Facture
+    class Target_Facture
     {
         public  bool HasSeat { get; set; }
         public bool HasToGo { get; set; }

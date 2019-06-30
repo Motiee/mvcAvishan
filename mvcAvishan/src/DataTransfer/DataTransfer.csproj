@@ -55,7 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\DAO.cs" />
-    <Compile Include="DAL\Source\Facture.cs" />
+    <Compile Include="DAL\Source\Source_Facture.cs" />
     <Compile Include="DBConnectionString\ConnectionStringControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
