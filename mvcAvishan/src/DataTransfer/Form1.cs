@@ -42,6 +42,9 @@ namespace DataTransfer
 
             DAL.Source.Source_FactureContainer factureContainer = new DAL.Source.Source_FactureContainer();
             factureContainer.Get_Ware_and_Quantity();
+
+            DAL.Source.Source_Ware source_Ware = new DAL.Source.Source_Ware();
+            source_Ware.Get_Ware();
         }
     }
 }
