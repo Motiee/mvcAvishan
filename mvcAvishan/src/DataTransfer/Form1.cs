@@ -39,6 +39,9 @@ namespace DataTransfer
         {
             DAL.Source.Source_Facture facture = new DAL.Source.Source_Facture();
             facture.Get_Facture_Service_Kinds();
+
+            DAL.Source.Source_FactureContainer factureContainer = new DAL.Source.Source_FactureContainer();
+            factureContainer.Get_Ware_and_Quantity();
         }
     }
 }
