@@ -15,7 +15,7 @@ namespace DataTransfer.DAL.Source
         {
 
            List<Target_FactureContiner> list = new List<Target_FactureContiner>();
-            dao = new DAO(DBConnection.enConnectionType.source);
+            dao = new DAO(DBConnection.enConnectionType.SourceConnectionString);
             cmd = new SqlCommand();
             cmd.CommandText = "SELECT  [WARE_ID],sum([FACTURE_CONTAINER_WARE_QUANTITY_VC])*-1 as WARE_QUANTITY FROM[RASBankAccounting].[dbo].[FACTURE_CONTAINER] group by[WARE_ID] order by[WARE_ID]";
             SqlDataReader sqlDataReader = dao.ExeDataReader(cmd);

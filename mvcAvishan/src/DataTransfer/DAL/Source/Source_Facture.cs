@@ -14,7 +14,7 @@ namespace DataTransfer.DAL.Source
         public Target_Facture Get_Facture_Service_Kinds() {
 
             Target_Facture target_Facture = new Target_Facture();
-            dao = new DAO(DBConnection.enConnectionType.source);
+            dao = new DAO(DBConnection.enConnectionType.SourceConnectionString);
             cmd = new SqlCommand();
             cmd.CommandText = "SELECT FACTURE_SERVICE_KIND_IN FROM[RASBankAccounting].[dbo].[FACTURE] group by FACTURE_SERVICE_KIND_IN";
             SqlDataReader sqlDataReader = dao.ExeDataReader(cmd);

@@ -101,11 +101,17 @@ namespace DataTransfer
 
         public void set(ConnectionString obj)
         {
-            Server = obj.Server;
-            DataBase = obj.DataBase;
-            UserName = obj.UserName;
-            password = obj.Password;
-            
+            try
+            {
+                if (obj.Server!= null){ Server = obj.Server; }
+                if (obj.DataBase != null) { DataBase = obj.DataBase; }
+                if (obj.UserName != null) { UserName = obj.UserName; }
+                if (obj.Password != null) { password = obj.Password; }
+            }
+            catch
+            {
+
+            }
         }
 
         public ConnectionString Get()

@@ -79,6 +79,7 @@
     <Compile Include="frm_connectionString.Designer.cs">
       <DependentUpon>frm_connectionString.cs</DependentUpon>
     </Compile>
+    <Compile Include="GenericXMLSerializer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DataBaseHelper.cs" />

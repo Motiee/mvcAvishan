@@ -15,7 +15,7 @@ namespace DataTransfer.DAL.Source
         {
 
             Target_Setting target_Setting = new Target_Setting();
-            dao = new DAO(DBConnection.enConnectionType.source);
+            dao = new DAO(DBConnection.enConnectionType.SourceConnectionString);
             cmd = new SqlCommand();
             cmd.CommandText = "select [SETTING_ID],[SETTING_NAME_VC],[SETTING_VALUE_VC],[SETTING_DESCRIPTION_VC] FROM[RASBankAccounting].[dbo].[SETTINGS] where[SETTING_ID] in (16,18,19,108)";
             SqlDataReader sqlDataReader = dao.ExeDataReader(cmd);
@@ -36,7 +36,9 @@ namespace DataTransfer.DAL.Source
 
         }
     }
-    class Target_Setting
+
+    [Serializable]
+    public class Target_Setting
     {
         public string RestaurantTitle { get; set; }
         public string RestaurantAddress { get; set; }

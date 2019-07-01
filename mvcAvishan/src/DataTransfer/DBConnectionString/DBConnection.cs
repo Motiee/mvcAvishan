@@ -10,8 +10,8 @@ namespace DataTransfer
     {
         public enum enConnectionType
         {
-            source = 0,
-            Target = 1
+            SourceConnectionString = 0,
+            TargetConnectionString = 1
         }
 
 

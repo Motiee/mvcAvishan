@@ -15,7 +15,7 @@ namespace DataTransfer.DAL.Source
         {
 
             List<Target_Ware> list = new List<Target_Ware>();
-            dao = new DAO(DBConnection.enConnectionType.source);
+            dao = new DAO(DBConnection.enConnectionType.SourceConnectionString);
             cmd = new SqlCommand();
             cmd.CommandText = "SELECT  dbo.WARE.WARE_ID, dbo.WARE.WARE_NAME_VC, dbo.WARE.WARE_PRICE_IN, dbo.WARE_CATEGORY.WARE_CATEGORY_ID, dbo.WARE_CATEGORY.WARE_CATEGOR_NAME_VC, "+
                          " dbo.WARE_CATEGORY.WARE_CATEGORY_TYPE_ID, dbo.WARE_CATEGORY_TYPE.WARE_CATEGORY_TYPE_NAME_VC, dbo.WARE_CATEGORY.WARE_CATEGORY_ACTIVE_BL, "+
@@ -45,7 +45,9 @@ namespace DataTransfer.DAL.Source
 
         }
     }
-    class Target_Ware
+
+   [Serializable]
+   public class Target_Ware
     {
         public  int WareId { get; set; }
         public string WareTitle { get; set; }

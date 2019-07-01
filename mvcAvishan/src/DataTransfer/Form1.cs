@@ -25,13 +25,13 @@ namespace DataTransfer
 
         private void sourceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frm_connectionString frm = new frm_connectionString(DataBaseHelper.Instaces,DBConnection.enConnectionType.source);
+            frm_connectionString frm = new frm_connectionString(DataBaseHelper.Instaces,DBConnection.enConnectionType.SourceConnectionString);
             frm.ShowDialog();
         }
 
         private void targetToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frm_connectionString frm = new frm_connectionString(DataBaseHelper.Instaces, DBConnection.enConnectionType.Target);
+            frm_connectionString frm = new frm_connectionString(DataBaseHelper.Instaces, DBConnection.enConnectionType.TargetConnectionString);
             frm.ShowDialog();
         }
 
@@ -44,10 +44,14 @@ namespace DataTransfer
             factureContainer.Get_Ware_and_Quantity();
 
             DAL.Source.Source_Ware source_Ware = new DAL.Source.Source_Ware();
-            source_Ware.Get_Ware();
+            var a = source_Ware.Get_Ware();
 
             DAL.Source.Source_Setting Source_Setting = new DAL.Source.Source_Setting();
-            Source_Setting.Get_Setting();
+           Source_Setting.Get_Setting();
+
+            GenericXMLSerializer< ConnectionString> genericXMLSerializer = new GenericXMLSerializer<ConnectionString>("set1");
+            genericXMLSerializer.Serialize(new ConnectionString("a","b","c","d"));
+
         }
     }
 }

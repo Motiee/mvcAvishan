@@ -50,7 +50,7 @@ namespace DataTransfer
     public  class ConnectionStringSerialization
     {
    
-        private string DirectoryPath = System.AppDomain.CurrentDomain.BaseDirectory + "Settings";
+        private string DirectoryPath = "Settings";
 
 
         private string FileName;
@@ -62,32 +62,21 @@ namespace DataTransfer
         public  ConnectionString Get()
 
         {
-            ConnectionString obj = new ConnectionString();
-            XmlSerializer serializer = new XmlSerializer(typeof(ConnectionString));
+            GenericXMLSerializer<ConnectionString> genericXMLSerializer = new GenericXMLSerializer<ConnectionString>(FileName,DirectoryPath);
 
-            try
-            {
-                StreamReader SReader = new StreamReader(DirectoryPath + "\\"+this.FileName+".xml");
-                obj = (ConnectionString)serializer.Deserialize(SReader);
-                SReader.Close();
-                SReader.Dispose();
-            }
-            catch
-            {
-                Set(obj);
-            }
-
-            return obj;
+            return genericXMLSerializer.Deserialize();
+           
         }
 
         public  bool  Set(ConnectionString obj)
         {
-            if (System.IO.Directory.Exists(DirectoryPath)==false) { System.IO.Directory.CreateDirectory(DirectoryPath); }
-            StreamWriter SWriter = new System.IO.StreamWriter(DirectoryPath + "\\" + this.FileName+".xml");
-            XmlSerializer serializer = new XmlSerializer(obj.GetType());
-            serializer.Serialize(SWriter, obj);
-            SWriter.Close();
-            SWriter.Dispose();
+
+
+            GenericXMLSerializer<ConnectionString> genericXMLSerializer = new GenericXMLSerializer<ConnectionString>(FileName,DirectoryPath);
+
+             genericXMLSerializer.Serialize(obj);
+
+          
             return true;
         }
 
