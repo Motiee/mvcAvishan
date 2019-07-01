@@ -16,7 +16,7 @@ namespace DataTransfer
         private string Directory = "";
        
 
-        public GenericXMLSerializer(string FileName, string Directory = "Serilize")
+        public GenericXMLSerializer(string FileName, string Directory = "Serialize")
         {
             this.Directory = Directory;
             this.FileName = FileName;

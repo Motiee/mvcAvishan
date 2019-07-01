@@ -50,7 +50,7 @@ namespace DataTransfer
     public  class ConnectionStringSerialization
     {
    
-        private string DirectoryPath = "Settings";
+        private string Directory = "Settings";
 
 
         private string FileName;
@@ -62,7 +62,7 @@ namespace DataTransfer
         public  ConnectionString Get()
 
         {
-            GenericXMLSerializer<ConnectionString> genericXMLSerializer = new GenericXMLSerializer<ConnectionString>(FileName,DirectoryPath);
+            GenericXMLSerializer<ConnectionString> genericXMLSerializer = new GenericXMLSerializer<ConnectionString>(FileName,Directory);
 
             return genericXMLSerializer.Deserialize();
            
@@ -72,7 +72,7 @@ namespace DataTransfer
         {
 
 
-            GenericXMLSerializer<ConnectionString> genericXMLSerializer = new GenericXMLSerializer<ConnectionString>(FileName,DirectoryPath);
+            GenericXMLSerializer<ConnectionString> genericXMLSerializer = new GenericXMLSerializer<ConnectionString>(FileName,Directory);
 
              genericXMLSerializer.Serialize(obj);
 

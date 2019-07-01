@@ -16,7 +16,7 @@ namespace DataTransfer
         {
             InitializeComponent();
 
-            DataBaseHelper.GetInstances();
+         //   DataBaseHelper.GetInstances();
           
         }
            
@@ -47,11 +47,24 @@ namespace DataTransfer
             var a = source_Ware.Get_Ware();
 
             DAL.Source.Source_Setting Source_Setting = new DAL.Source.Source_Setting();
-           Source_Setting.Get_Setting();
+            Source_Setting.Get_Setting();
+           
 
-            GenericXMLSerializer< ConnectionString> genericXMLSerializer = new GenericXMLSerializer<ConnectionString>("set1");
-            genericXMLSerializer.Serialize(new ConnectionString("a","b","c","d"));
 
+            GenericXMLSerializer<List<DAL.Source.Target_Ware>> genericXMLSerializer = new GenericXMLSerializer<List<DAL.Source.Target_Ware>>("Target_Ware");
+
+             genericXMLSerializer.Serialize(a);
+
+
+            dataGridView1.DataSource = genericXMLSerializer.Deserialize();
+
+        }
+
+        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            GenericXMLSerializer<List<DAL.Source.Target_Ware>> genericXMLSerializer = new GenericXMLSerializer<List<DAL.Source.Target_Ware>>("Target_Ware");
+            List<DAL.Source.Target_Ware> b = dataGridView1.DataSource as List<DAL.Source.Target_Ware>;
+            genericXMLSerializer.Serialize(b);
         }
     }
 }
