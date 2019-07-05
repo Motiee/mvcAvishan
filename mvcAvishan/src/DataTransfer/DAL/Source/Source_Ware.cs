@@ -17,15 +17,21 @@ namespace DataTransfer.DAL.Source
             List<Target_Ware> list = new List<Target_Ware>();
             dao = new DAO(DBConnection.enConnectionType.SourceConnectionString);
             cmd = new SqlCommand();
-            cmd.CommandText = "SELECT  dbo.WARE.WARE_ID, dbo.WARE.WARE_NAME_VC, dbo.WARE.WARE_PRICE_IN, dbo.WARE_CATEGORY.WARE_CATEGORY_ID, dbo.WARE_CATEGORY.WARE_CATEGOR_NAME_VC, "+
-                         " dbo.WARE_CATEGORY.WARE_CATEGORY_TYPE_ID, dbo.WARE_CATEGORY_TYPE.WARE_CATEGORY_TYPE_NAME_VC, dbo.WARE_CATEGORY.WARE_CATEGORY_ACTIVE_BL, "+
-                         " dbo.GIVE_FOOD_PLACE.GIVE_FOOD_PLACE_ID, dbo.GIVE_FOOD_PLACE.GIVE_FOOD_PLACE_NAME_VC "+
-                         " FROM  dbo.WARE INNER JOIN "+
-                         " dbo.WARE_CATEGORY ON dbo.WARE.WARE_CATEGORY_ID = dbo.WARE_CATEGORY.WARE_CATEGORY_ID INNER JOIN "+
-                         " dbo.WARE_CATEGORY_TYPE ON dbo.WARE_CATEGORY.WARE_CATEGORY_TYPE_ID = dbo.WARE_CATEGORY_TYPE.WARE_CATEGORY_TYPE_ID INNER JOIN "+
-                         " dbo.GIVE_FOOD_PLACE ON dbo.WARE.GIVE_FOOD_PLACE_ID = dbo.GIVE_FOOD_PLACE.GIVE_FOOD_PLACE_ID "+
-                         " where dbo.WARE_CATEGORY_TYPE.WARE_CATEGORY_TYPE_ID <> 3";
-            SqlDataReader sqlDataReader = dao.ExeDataReader(cmd);
+            cmd.CommandText = "SELECT  dbo.WARE.WARE_ID, dbo.WARE.WARE_NAME_VC, dbo.WARE.WARE_PRICE_IN, dbo.WARE_CATEGORY.WARE_CATEGORY_ID, dbo.WARE_CATEGORY.WARE_CATEGOR_NAME_VC, " +
+                        " dbo.WARE_CATEGORY.WARE_CATEGORY_TYPE_ID, dbo.WARE_CATEGORY_TYPE.WARE_CATEGORY_TYPE_NAME_VC, dbo.WARE_CATEGORY.WARE_CATEGORY_ACTIVE_BL, " +
+                        " dbo.GIVE_FOOD_PLACE.GIVE_FOOD_PLACE_ID, dbo.GIVE_FOOD_PLACE.GIVE_FOOD_PLACE_NAME_VC, count(dbo.FACTURE_CONTAINER.WARE_ID) AS OrderCount " +
+"FROM dbo.WARE INNER JOIN " +
+                  "       dbo.WARE_CATEGORY ON dbo.WARE.WARE_CATEGORY_ID = dbo.WARE_CATEGORY.WARE_CATEGORY_ID INNER JOIN " +
+                   "      dbo.WARE_CATEGORY_TYPE ON dbo.WARE_CATEGORY.WARE_CATEGORY_TYPE_ID = dbo.WARE_CATEGORY_TYPE.WARE_CATEGORY_TYPE_ID INNER JOIN " +
+                   "      dbo.GIVE_FOOD_PLACE ON dbo.WARE.GIVE_FOOD_PLACE_ID = dbo.GIVE_FOOD_PLACE.GIVE_FOOD_PLACE_ID INNER JOIN " +
+                      "   dbo.FACTURE_CONTAINER ON dbo.WARE.WARE_ID = dbo.FACTURE_CONTAINER.WARE_ID " +
+" WHERE(dbo.WARE_CATEGORY_TYPE.WARE_CATEGORY_TYPE_ID <> 3) " +
+
+" group by   dbo.WARE.WARE_ID, dbo.WARE.WARE_NAME_VC, dbo.WARE.WARE_PRICE_IN, dbo.WARE_CATEGORY.WARE_CATEGORY_ID, dbo.WARE_CATEGORY.WARE_CATEGOR_NAME_VC,  " +
+                "         dbo.WARE_CATEGORY.WARE_CATEGORY_TYPE_ID, dbo.WARE_CATEGORY_TYPE.WARE_CATEGORY_TYPE_NAME_VC, dbo.WARE_CATEGORY.WARE_CATEGORY_ACTIVE_BL,  " +
+                    "     dbo.GIVE_FOOD_PLACE.GIVE_FOOD_PLACE_ID, dbo.GIVE_FOOD_PLACE.GIVE_FOOD_PLACE_NAME_VC; ";
+           
+                    SqlDataReader sqlDataReader = dao.ExeDataReader(cmd);
 
             while (sqlDataReader.Read())
             {
@@ -36,7 +42,7 @@ namespace DataTransfer.DAL.Source
                 target_Ware.WarePrice = Convert.ToDecimal(sqlDataReader["WARE_PRICE_IN"]);
                 target_Ware.IsActive = Convert.ToBoolean(sqlDataReader["WARE_PRICE_IN"]);
                 target_Ware.WarePlace = Convert.ToInt32(sqlDataReader["GIVE_FOOD_PLACE_ID"]);
-
+                target_Ware.OrderCount = Convert.ToInt32(sqlDataReader["OrderCount"]);
 
                 list.Add(target_Ware);
             }
@@ -56,7 +62,8 @@ namespace DataTransfer.DAL.Source
         public decimal WarePrice { get; set; }
        
         public bool IsActive { get; set; }
-       
+
+        public int OrderCount { get; set; }
 
     }
 }
