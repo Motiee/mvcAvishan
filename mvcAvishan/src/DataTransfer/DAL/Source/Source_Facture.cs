@@ -16,7 +16,7 @@ namespace DataTransfer.DAL.Source
             Target_Facture target_Facture = new Target_Facture();
             dao = new DAO(DBConnection.enConnectionType.SourceConnectionString);
             cmd = new SqlCommand();
-            cmd.CommandText = "SELECT FACTURE_SERVICE_KIND_IN FROM[RASBankAccounting].[dbo].[FACTURE] group by FACTURE_SERVICE_KIND_IN";
+            cmd.CommandText = "SELECT DISTINCT FACTURE_SERVICE_KIND_IN FROM [FACTURE] ";
             SqlDataReader sqlDataReader = dao.ExeDataReader(cmd);
 
             while (sqlDataReader.Read())

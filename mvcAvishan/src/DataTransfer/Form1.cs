@@ -35,10 +35,38 @@ namespace DataTransfer
             frm.ShowDialog();
         }
 
+        private void Fill_Resturant(DAL.Source.Target_Setting target_Setting)
+        {
+            txtPhone.Text = target_Setting.Phone;
+            txtRestaurantAddress.Text = target_Setting.RestaurantAddress;
+            txtRestaurantTitle.Text = target_Setting.RestaurantTitle;
+            txtTwoPersonCost.Text = target_Setting.TwoPersonCost.ToString();
+            txtX.Text = target_Setting.X;
+            txtY.Text = target_Setting.Y;
+            txtRestaurantId.Text = target_Setting.ResturantId.ToString();
+
+            chkHasHealthyFood.Checked = target_Setting.HasHealthyFood;
+          
+            chkHasHokan.Checked = target_Setting.HasHokan;
+            chkHasParking.Checked = target_Setting.HasParking;
+     
+            chkHasSeaFood.Checked = target_Setting.HasSeaFood;
+    
+        }
+
+        private void Fill_Facture_Service_Kinds(DAL.Source.Target_Facture target_Facture) {
+            chkHasDelivery.Checked = target_Facture.HasDelivery;
+            chkHasToGo.Checked = target_Facture.HasToGo;
+            chkHasSeat.Checked = target_Facture.HasSeat;
+
+        }
         private void button1_Click(object sender, EventArgs e)
         {
+            DAL.Source.Source_Setting Source_Setting = new DAL.Source.Source_Setting();
+            Fill_Resturant(Source_Setting.Get_Setting());
+
             DAL.Source.Source_Facture facture = new DAL.Source.Source_Facture();
-            facture.Get_Facture_Service_Kinds();
+            Fill_Facture_Service_Kinds( facture.Get_Facture_Service_Kinds());
 
             DAL.Source.Source_FactureContainer factureContainer = new DAL.Source.Source_FactureContainer();
             factureContainer.Get_Ware_and_Quantity();
@@ -46,14 +74,16 @@ namespace DataTransfer
             DAL.Source.Source_Ware source_Ware = new DAL.Source.Source_Ware();
             var a = source_Ware.Get_Ware();
 
-            DAL.Source.Source_Setting Source_Setting = new DAL.Source.Source_Setting();
-            Source_Setting.Get_Setting();
-           
+            DAL.Source.Source_BankPos bankPos = new DAL.Source.Source_BankPos();
+            chkHasPOS.Checked = bankPos.Get_HasPos();
+
+            DAL.Source.Source_TwoPersonCost twoPersonCost = new DAL.Source.Source_TwoPersonCost();
+            txtTwoPersonCost.Text =twoPersonCost.get().ToString();
 
 
             GenericXMLSerializer<List<DAL.Source.Target_Ware>> genericXMLSerializer = new GenericXMLSerializer<List<DAL.Source.Target_Ware>>("Target_Ware");
 
-             genericXMLSerializer.Serialize(a);
+            genericXMLSerializer.Serialize(a);
 
 
             dataGridView1.DataSource = genericXMLSerializer.Deserialize();
